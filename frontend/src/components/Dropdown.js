@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectName, selectAppt } from '../actions';
 
 
 const Dropdown = () => {
-  const [active, setActive] = useState(false)
 
-  const clickDropdown = () => {
-    setActive(!active);
+  // Use the name reducer
+  const name = useSelector(state => state.name)
+  const dispatch = useDispatch();
+
+  const handleNameClick = (e) => {
+    dispatch(selectName(e.target.value));
+    dispatch(selectAppt(''));
   }
 
   return (
-    <div className={"dropdown" + (active ? " is-active" : "")} onClick={clickDropdown}>
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Choose</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <div class="dropdown-item">Joseph Joestar</div>
-          <div class="dropdown-item">Jotaro Kujo</div>
-          <div class="dropdown-item">Caesar Zeppeli</div>
-
+      <div className="control">
+        <div className="select">
+          <select value={name} onChange={handleNameClick}>
+            <option value='' selected disabled hidden>Choose here</option>
+            <option onClick={handleNameClick}>Joseph Joestar</option>
+            <option onClick={handleNameClick}>Jotaro Kujo</option>
+            <option onClick={handleNameClick}>Caesar Zeppeli</option>
+          </select>
         </div>
       </div>
-    </div>
   )
 }
 
