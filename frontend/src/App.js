@@ -11,7 +11,7 @@ const App = () => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const items = await fetch('http://localhost:5000/api');
+    const items = await fetch('http://localhost:5000/api/appts');
     setData(await items.json());
   };
 
