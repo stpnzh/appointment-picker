@@ -6,7 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers';
 import { createStore } from 'redux'; 
 import { Provider } from 'react-redux';
+import { Auth0Provider } from '@auth0/auth0-react';
 
+
+const domain = process.env.REACT_APP_AUTH0_DOMAIN
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
 
 const store = createStore(
   rootReducer, 
@@ -15,9 +19,11 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
