@@ -14,12 +14,7 @@ const port = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(session({
-  secret: 'secretcode',
-  resave: true,
-  saveUninitialized: true
-}))
-app.use(cookieParser('secretcode'))
+
 
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, 
@@ -28,7 +23,10 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedT
 
 // Set up router
 const apiRoute = require('./routes/api');
+const authRoute = require('./routes/auth');
+
 app.use('/api', apiRoute);
+app.use('/api/user', authRoute);
 
 app.get('/', (req, res) => {
   res.send('Connected')
