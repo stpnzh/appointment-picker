@@ -1,58 +1,73 @@
 import React, { useState } from 'react';
-import appts from './appts.json'
 import Dropdown from './Dropdown';
 import DateToggler from './DateToggler';
 import Confirm from './Confirm';
-import SelfInput from './SelfInput';
+import Form from './Form';
+import Item from './Item';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectName, selectAppt, selectDate, setSelf } from '../actions';
+import { setProvider, setAppt, setDate, setPatient } from '../actions';
 
-const Home = () => {
+const Home = (props) => {
 
-  const name = useSelector(state => state.name)
+  const [submit, setSubmit] = useState(false);
+
+  const provider = useSelector(state => state.provider)
   const date = useSelector(state => state.date)
-  const self = useSelector(state => state.self)
+  const patient = useSelector(state => state.patient)
   const dispatch = useDispatch();
 
-  const handleClick = (e) => {
-    dispatch(selectAppt(e.target.value));
-  }
-
   let newAppts = []
-  appts.forEach(i => {
-    if (i.time.slice(0,10) === date.toISODate().toString() && i.name === name) {
+  props.data.forEach(i => {
+    if (i.datetime.slice(0,10) === date.toISODate().toString() && i.provider === provider) {
       newAppts.push(i)
     }
   })
 
-  const buttons = newAppts.map(i => {
-    let j = i.time.slice(11,-4)
-    let s = parseInt(j.slice(0,2)) < 12 ? 'AM' : 'PM'
-    let t;
-    if (j.charAt(0) === '0') {
-      t = j.slice(1,) + ' ' + s
+  const apptsArray = newAppts.map(i => {
+    let time = i.datetime.slice(11,16)
+    let meridiem = parseInt(time.slice(0,2)) < 12 ? 'AM' : 'PM'
+    let formattedTime;
+    if (time.charAt(0) === '0') {
+      formattedTime = time.slice(1,) + ' ' + meridiem
     } else {
-      t = j + ' ' + s
+      formattedTime = time + ' ' + meridiem
     }
-    if (i.booked) {
-      return (
-        <button class="button is-primary" value={i.time} onClick={handleClick}>{t}</button>
-      )
-    } else {
-      return <button class='button is-light'>{t}</button>
-    }
+    return <Item data={i} t={formattedTime} fetchData={props.fetchData}/>
   })
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmit(!submit);
+  }
+
+  const handleChange = (e) => {
+    dispatch(setPatient(e.target.value));
+  }
+
 
   return (
     <div>
       <h1 className='is-size-1'>Pick your appointment</h1>
-      <SelfInput />
-
-      {self ? 'show' : 'dont'}
+      {/* <Form /> */}
+      <div className='container is-max-desktop'>
+        Enter your name to get started
+        <form onSubmit={handleSubmit}>
+          <input className='input' type="text" placeholder='Name' onChange={handleChange} style={{ width: `40%` }}/>
+          <div>
+            <input className='button is-link' type='submit'></input>
+          </div>
+        </form>
+      </div>
+      {patient && submit ?
+      <>
       <Dropdown />
       <DateToggler />
-      <div className='section'>{buttons}</div>
-      <Confirm />
+      <div className='section'>{apptsArray}</div>
+      <Confirm fetchData={props.fetchData}/>
+      </>
+      :
+      <div></div>
+      }
     </div>
   )
 }

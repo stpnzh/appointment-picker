@@ -1,15 +1,17 @@
 import { combineReducers } from 'redux';
-import nameReducer from './name';
+import providerReducer from './provider';
 import apptReducer from './appt';
 import dateReducer from './date';
-import selfReducer from './self';
+import patientReducer from './patient';
+import idReducer from './id';
 
 
 const rootReducer = combineReducers({
-  name : nameReducer,
+  provider : providerReducer,
   appt : apptReducer, 
   date : dateReducer,
-  self : selfReducer
+  patient : patientReducer,
+  id : idReducer
 })
 
 export default rootReducer;

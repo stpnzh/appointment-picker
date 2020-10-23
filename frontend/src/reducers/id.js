@@ -1,12 +1,12 @@
 const initialState = ''
 
-const apptReducer = (state = initialState, action) => {
+const idReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'APPT':
+    case 'ID':
       return action.payload
     default:
       return state 
   }
 }
 
-export default apptReducer;
+export default idReducer;

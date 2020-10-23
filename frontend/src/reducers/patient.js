@@ -1,12 +1,12 @@
 const initialState = '';
 
-const selfReducer = (state = initialState, action) => {
+const patientReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ENTER_NAME':
+    case 'PATIENT_NAME':
       return action.payload;
     default:
       return state;
   }
 }
 
-export default selfReducer;
+export default patientReducer;

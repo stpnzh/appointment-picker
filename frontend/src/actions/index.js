@@ -1,33 +1,34 @@
-const SELECT_NAME = 'SELECT_NAME';
-const SELECT_APPT = 'SELECT_APPT';
-const SELECT_DATE = 'SELECT_DATE';
-const ENTER_NAME = 'ENTER_NAME';
-
-
-export const selectName = (name) => {
+export const setProvider = (name) => {
   return {
-    type: SELECT_NAME,
+    type: 'PROVIDER_NAME',
     payload: name
   }
 }
 
-export const selectAppt = (appt) => {
+export const setAppt = (appt) => {
   return {
-    type: SELECT_APPT,
+    type: 'APPT',
     payload: appt
   }
 }
 
-export const selectDate = (date) => {
+export const setDate = (date) => {
   return {
-    type: SELECT_DATE,
+    type: 'DATE',
     payload: date
   }
 }
 
-export const setSelf = (self) => {
+export const setPatient = (name) => {
   return {
-    type: ENTER_NAME,
-    payload: self
+    type: 'PATIENT_NAME',
+    payload: name
+  }
+}
+
+export const setId = (id) => {
+  return {
+    type: 'ID',
+    payload: id
   }
 }

@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectName, selectAppt } from '../actions';
+import { setProvider, setAppt } from '../actions';
 
 
 const Dropdown = () => {
 
   // Use the name reducer
-  const name = useSelector(state => state.name)
+  const provider = useSelector(state => state.provider)
   const dispatch = useDispatch();
 
   const handleNameClick = (e) => {
-    dispatch(selectName(e.target.value));
-    dispatch(selectAppt(''));
+    dispatch(setProvider(e.target.value));
+    dispatch(setAppt(''));
   }
 
   return (
       <div className="control">
         <div className="select">
-          <select value={name} onChange={handleNameClick}>
+          <select value={provider} onChange={handleNameClick}>
             <option value='' selected disabled hidden>Choose here</option>
             <option onClick={handleNameClick}>Joseph Joestar</option>
             <option onClick={handleNameClick}>Jotaro Kujo</option>

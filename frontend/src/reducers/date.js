@@ -4,7 +4,7 @@ const initialState = DateTime.local()
 
 const dateReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SELECT_DATE':
+    case 'DATE':
       return action.payload;
     default:
       return state
