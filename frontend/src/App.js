@@ -4,6 +4,7 @@ import 'bulma/css/bulma.css'
 import './App.css'
 
 import Home from './components/Home';
+import Login from './components/Login';
 
 const App = () => {
   
@@ -20,17 +21,16 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    
-    <div className="App">
-    <Switch>
-      <Route path='/' exact>
-        <Home data={data} fetchData={fetchData}/>
-      </Route>
-      <Route path='/login'>
-        <div>test</div>
-      </Route>
-      </Switch>
-    </div>
+      <div className="App">
+        <Switch>
+          <Route path='/' exact>
+            <Home data={data} fetchData={fetchData}/>
+          </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
