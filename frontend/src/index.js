@@ -19,11 +19,13 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
+    
       <Provider store={store}>
+      <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
         <App />
+        </Auth0Provider>
       </Provider>
-    </Auth0Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

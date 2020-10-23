@@ -15,13 +15,7 @@ const Form = () => {
   }
 
   return (
-    <div>
-    Enter name to get started:
-      <form onSubmit={handleSubmit}>
-        <input className="input" type="text" placeholder="Text input" onChange={e => dispatch(setPatient(e.target.value))}></input>
-        <input className='button is-primary is-light' type='submit'></input>
-      </form>
-    </div>
+
   )
 }
 

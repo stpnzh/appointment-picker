@@ -1,8 +1,11 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 
 const Login = () => {
+
+  const { loginWithRedirect } = useAuth0();
   return (
     <div className='container'>
       <h1 className='is-size-1'>Login here</h1>
@@ -27,7 +30,7 @@ const Login = () => {
       </div>
       <div className="field">
         <p className="control">
-          <button className="button is-link">
+          <button className="button is-link" onClick={() => loginWithRedirect()}>
             Login
           </button>
         </p>
