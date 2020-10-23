@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import 'bulma/css/bulma.css'
+import './App.css'
 
 import Home from './components/Home';
 
@@ -18,9 +19,19 @@ const App = () => {
   }, []);
 
   return (
+    <BrowserRouter>
+    
     <div className="App">
-      <Home data={data} fetchData={fetchData}/>
+    <Switch>
+      <Route path='/' exact>
+        <Home data={data} fetchData={fetchData}/>
+      </Route>
+      <Route path='/login'>
+        <div>test</div>
+      </Route>
+      </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 
