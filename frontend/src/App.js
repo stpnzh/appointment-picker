@@ -5,6 +5,7 @@ import './App.css'
 
 import Home from './components/Home';
 import Login from './components/Login';
+import Register from './components/Register';
 
 const App = () => {
   
@@ -25,6 +26,9 @@ const App = () => {
         <Switch>
           <Route path='/' exact>
             <Home data={data} fetchData={fetchData}/>
+          </Route>
+          <Route path='/register'>
+            <Register />
           </Route>
           <Route path='/login'>
             <Login />
