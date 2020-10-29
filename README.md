@@ -8,6 +8,8 @@ This is a fullstack application built on the MERN stack (MongoDB, Express, React
 
 ## Visuals
 
+[ ![](images/appt-picker-1.png) ](images/appt-picker-1.png)
+
 ## Installation
 
 Ensure you are in the root directory.

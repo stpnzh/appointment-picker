@@ -16,8 +16,8 @@ const Item = (props) => {
   return (
     <>
       {props.data.booked ? 
-      <button class='button is-light'>{props.t}</button> : 
-      <button class='button is-primary' value={props.data.datetime} onClick={handleClick}>{props.t}</button>
+      <button className='button is-light mx-2'>{props.t}</button> : 
+      <button className='button is-primary mx-2' value={props.data.datetime} onClick={handleClick}>{props.t}</button>
       }
     </>
 

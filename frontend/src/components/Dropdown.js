@@ -18,7 +18,7 @@ const Dropdown = () => {
       <div className="control">
         <div className="select">
           <select value={provider} onChange={handleNameClick}>
-            <option value='' selected disabled hidden>Choose here</option>
+            <option value='' selected disabled hidden>Choose your provider</option>
             <option onClick={handleNameClick}>Joseph Joestar</option>
             <option onClick={handleNameClick}>Jotaro Kujo</option>
             <option onClick={handleNameClick}>Caesar Zeppeli</option>

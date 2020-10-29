@@ -51,12 +51,15 @@ const Confirm = (props) => {
 
   } else {
     output = 
-    <div>
+    <div className='p-5'>
       {appt ? 
       <>
-        <div>You've selected {provider} at {appt}</div> 
-        <button className='button is-warning' onClick={handleConfirmClick}>Confirm</button>
-        <button className='button is-danger' onClick={handleResetClick}>Cancel</button>
+        <div className='p-2'>
+          You've selected <strong>{provider}</strong> at {appt}
+        </div> 
+
+        <button className='button is-warning mx-2' onClick={handleConfirmClick}>Confirm</button>
+        <button className='button is-danger mx-2' onClick={handleResetClick}>Cancel</button>
       </>
        : 
       ''}

@@ -46,25 +46,26 @@ const Home = (props) => {
 
 
   return (
-    <div>
+    <div className='p-5'>
       <h1 className='is-size-1'>Pick your appointment</h1>
       {/* <Form /> */}
       <div className='container is-max-desktop'>
-        Enter your name to get started
+        <div className='p-3'>Enter your name to get started:</div>
         <form onSubmit={handleSubmit}>
           <input className='input' type="text" placeholder='Name' onChange={handleChange} style={{ width: `40%` }}/>
-          <div>
+          <div className='p-3'>
             <input className='button is-link' type='submit'></input>
           </div>
         </form>
       </div>
+
       {patient && submit ?
-      <>
-      <Dropdown />
-      <DateToggler />
-      <div className='section'>{apptsArray}</div>
-      <Confirm fetchData={props.fetchData}/>
-      </>
+      <div className='pt-4'>
+        <div className='pb-3'><Dropdown /></div>
+        <DateToggler />
+        <div>{apptsArray}</div>
+        <Confirm fetchData={props.fetchData}/>
+      </div>
       :
       <div></div>
       }
