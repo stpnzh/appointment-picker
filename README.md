@@ -8,7 +8,12 @@ This is a fullstack application built on the MERN stack (MongoDB, Express, React
 
 ## Visuals
 
-<img src='images/img2.jpg' width='200' />
+<p float='left'>
+  <img src='images/img1.jpg' height='75' /> 
+  <img src='images/img2.jpg' height='75' />
+  <img src='images/img3.jpg' height='75' />
+  <img src='images/img4.jpg' height='75' />
+</p>
 
 ## Installation
 
