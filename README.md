@@ -8,10 +8,7 @@ This is a fullstack application built on the MERN stack (MongoDB, Express, React
 
 ## Visuals
 
-<!-- [ ![](images/appt-picker-1.jpg) ](images/appt-picker-1.jpg) -->
-![](images/img1.jpg)
-![](images/img2.jpg)
-
+<img src='images/img2.jpg' width='200' />
 
 ## Installation
 
